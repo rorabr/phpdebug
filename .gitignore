@@ -1,0 +1,15 @@
+# my simple .gitignore
+# source: http://ironco.de/bare-minimum-git/
+
+# ignore all files starting with . or ~
+.*
+~*
+
+# ignore deployPHP config
+.deployphp
+
+# ignore CVS versioning
+CVS/
+
+# track these files, if they exist
+!.gitignore
