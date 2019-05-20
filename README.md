@@ -358,7 +358,12 @@ sessions are stored in a file in the `/tmp` directory.
 PHPdebug can benefit by PHP assertions, aka `assert()`. By using
 `assert()` you can make sure the debugger will not be invoked in
 production and performance compromised of calling PHPdebug's
-functions unnecessarily.
+functions unnecessarily. Assert can be used to require `debug.php`
+conditionally on development:
+
+```php
+assert((require_once("debug.php")) || true);
+```
 
 The PHP functions exported by PHPdebug return true to be used in
 `assert()` directly. Example calls using `assert()`:
