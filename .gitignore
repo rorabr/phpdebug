@@ -4,6 +4,7 @@
 # ignore all files starting with . or ~
 .*
 ~*
+Session.vim
 
 # ignore deployPHP config
 .deployphp

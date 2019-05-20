@@ -132,12 +132,12 @@ by PHP, Javascript or the httpd's error log. It can also inform the
 output of phpinfo() or the user's session data. Among the buttons
 there's also a connection indicator and error messages.
 
-![PHPdebug interface](http://localhost/debug/images/screenshot.png)
+![PHPdebug interface](https://github.com/rorabr/phpdebug/blob/master/images/screenshot.png)
 
 ### Stop and Start buttons
 
-![PHPdebug interface](http://localhost/debug/images/stop.png)
-![PHPdebug interface](http://localhost/debug/images/start.png)
+![PHPdebug interface](https://github.com/rorabr/phpdebug/blob/master/images/stop.png)
+![PHPdebug interface](https://github.com/rorabr/phpdebug/blob/master/images/start.png)
 
 If PHPdebug is stopped, it won't connect to the
 server to fetch error messages which can acumulate and be lost after
@@ -146,8 +146,8 @@ restores PHPdebug to connect and fetch entries from the server.
 
 ### Freeze and Resume buttons
 
-![PHPdebug interface](http://localhost/debug/images/freeze.png)
-![PHPdebug interface](http://localhost/debug/images/resume.png)
+![PHPdebug interface](https://github.com/rorabr/phpdebug/blob/master/images/freeze.png)
+![PHPdebug interface](https://github.com/rorabr/phpdebug/blob/master/images/resume.png)
 
 Stops and resume control the automatic screen
 scrolling. Usefull to keep the current screen frozen in place until
@@ -156,13 +156,13 @@ the server and inserting them in the web page, but not scrolling.
 
 ### Clear button
 
-![PHPdebug interface](http://localhost/debug/images/clear.png)
+![PHPdebug interface](https://github.com/rorabr/phpdebug/blob/master/images/clear.png)
 
 Delete all entries and clear the screen.
 
 ### Phpinfo button
 
-![PHPdebug interface](http://localhost/debug/images/phpinfo.png)
+![PHPdebug interface](https://github.com/rorabr/phpdebug/blob/master/images/phpinfo.png)
 
 Only shown when the server is accessed thru a web
 server like apache or nginx. When run from a standalone server, this
@@ -173,7 +173,7 @@ usually bigger that the screen.
 
 ### Session button
 
-![PHPdebug interface](http://localhost/debug/images/session.png)
+![PHPdebug interface](https://github.com/rorabr/phpdebug/blob/master/images/session.png)
 
 If the PHP application being debugged is sending it's
 session data to the server this button will be shown and if used will
