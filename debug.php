@@ -62,6 +62,7 @@ function debug_webpost($url, $data) {
     $debug_startTime = "";
     debug_webpost($url, $start);
   }
+  if (! isset($data)) return;
   $options = array(
     'http' => array( // use key 'http' even if you send the request to https://...
       'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -96,7 +97,7 @@ function debug_errorHandler($errno, $errmsg, $filename, $linenum, $vars) {
       and : https://www.hhutzler.de/blog/handling-php-parse-errors/ */
 function debug_shutdownHandler() 
 {
-  global $debug_URL, $debug_errortype, $debug_clientSendSession;
+  global $debug_URL, $debug_errortype, $debug_clientSendSession, $debug_startFile, $debug_startTime;
   $lasterror = error_get_last();
   if (isset($lasterror)) {
     switch ($lasterror['type'])
@@ -119,6 +120,13 @@ function debug_shutdownHandler()
     $data = array("func" => "session", "time" => date("Y-m-d H:i:s"), "type" => "",
         "errmsg" => "<div class='session'>" . debug_assocHtml($_SESSION) . "</div>", "errno" => 0);
     debug_webpost($debug_URL, $data);
+    $debug_clientSendSession = false;
+  }
+  if ($debug_startFile != "") { // no other webpost, send in the start
+    $start = array("func" => "start", "time" => $debug_startTime, "errmsg" => "",
+      "filename" => $debug_startFile, "line" => 1);
+    $debug_startFile = "";
+    debug_webpost($debug_URL, $start);
   }
 }
 
