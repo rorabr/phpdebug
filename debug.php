@@ -132,10 +132,13 @@ function debug_shutdownHandler()
 
 /** Prepares the PHP debugger client, receives the debugger URL (optional).
     If the URL is "", uses the request URL to build the debug.php URL. */
-function debug_start($url = "", $sendSession = false) {
+function debug_start($url = "", $sendSession = false, $logStart = true) {
   global $debug_URL, $debug_clientSendSession, $debug_startFile, $debug_startTime;
-  $debug_startFile = __FILE__;
-  $debug_startTime = date("Y-m-d H:i:s");
+  if ($logStart) {
+    $frame = debug_backtrace(0, 1)[0];
+    $debug_startFile = isset($frame["file"]) ? ($frame["file"]. "(" . $frame["line"] . ")") : __FILE__;
+    $debug_startTime = date("Y-m-d H:i:s");
+  }
   error_reporting(E_ALL | E_STRICT);
   if ($url == "") {
     $url = debug_completeURL();
@@ -221,7 +224,8 @@ function debug_installJShandler() {
 // TODO: differenciate between multiple sessions
 function debug_insertRow($row) {
   // TODO: handle json, read and write errors
-  $data = json_decode(file_get_contents(debug_tmpFname()), true);
+  error_reporting(E_ERROR | E_STRICT);
+  $data = json_decode(file_get_contents(debug_tmpFname()), true) ?? array("list" => array());
   if ($row["func"] == "session") {
     $data["session"] = array($row);
   } else {
@@ -233,6 +237,7 @@ function debug_insertRow($row) {
     }
   }
   file_put_contents(debug_tmpFname(), json_encode($data));
+  error_reporting(E_ALL | E_STRICT);
 }
 
 /** Read the error list (optionally the HTTPd's error log) and empty it */
