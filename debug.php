@@ -136,7 +136,8 @@ function debug_start($url = "", $sendSession = false, $logStart = true) {
   global $debug_URL, $debug_clientSendSession, $debug_startFile, $debug_startTime;
   if ($logStart) {
     $frame = debug_backtrace(0, 1)[0];
-    $debug_startFile = isset($frame["file"]) ? ($frame["file"]. "(" . $frame["line"] . ")") : __FILE__;
+    $from = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : ($frame["file"]. "(" . $frame["line"] . ")");
+    $debug_startFile = isset($frame["file"]) ? $from : __FILE__;
     $debug_startTime = date("Y-m-d H:i:s");
   }
   error_reporting(E_ALL | E_STRICT);
