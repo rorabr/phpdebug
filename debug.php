@@ -46,7 +46,7 @@ function debug_tmpFname() {
 function debug_assocHtml($h) {
   $s = "<table class='table table-sm'><tbody><thead class='thead-light'><tr><th>key</th><th>&nbsp;</th><th>value</th></tr></thead>";
   foreach ($h as $key => $value) {
-    $s .= "<tr><td>$key</td><td><span class='text-right'><i class='fa fa-arrow-right'></i></span></td><td>" . (is_array($value) ? debug_assocHtml($value) : $value) . "</td></tr>";
+    $s .= "<tr><td>$key</td><td><span class='text-right'><i class='fa fa-arrow-right'></i></span class='text-nowrap'></td><td>" . (is_array($value) ? debug_assocHtml($value) : $value) . "</td></tr>";
   }
   $s .= "</tbody></table>";
   return($s);
